@@ -28,7 +28,29 @@ var IndecisionApp = function (_React$Component) {
         return _this;
     }
 
+    //only class-based components can call the mount methods, stateless functional components can't
+    //which is a tradeoff for speed.
+
+
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('Component did mount');
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            console.log('Component did update');
+        }
+
+        //this component is barely used
+
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('ComponentWillUnmount');
+        }
+    }, {
         key: 'handlePick',
         value: function handlePick() {
             var randomNumber = Math.floor(Math.random() * this.state.options.length);

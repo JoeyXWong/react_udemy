@@ -13,6 +13,21 @@ class IndecisionApp extends React.Component {
         }
     }
 
+    //only class-based components can call the mount methods, stateless functional components can't
+    //which is a tradeoff for speed.
+    componentDidMount(){
+        console.log('Component did mount');
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log('Component did update');
+    }
+
+    //this component is barely used
+    componentWillUnmount(){
+        console.log('ComponentWillUnmount');
+    }
+
     handlePick(){
         const randomNumber = Math.floor(Math.random() * this.state.options.length);
         alert(this.state.options[randomNumber]);
