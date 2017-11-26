@@ -23,7 +23,7 @@ var IndecisionApp = function (_React$Component) {
         _this.handleAddOption = _this.handleAddOption.bind(_this);
         _this.handleDeleteOptionSingle = _this.handleDeleteOptionSingle.bind(_this);
         _this.state = {
-            options: _this.props.options
+            options: []
         };
         return _this;
     }
@@ -35,12 +35,24 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log('Component did mount');
+
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+                this.setState(function () {
+                    return { options: options };
+                });
+                console.log('Component did mount');
+            } catch (e) {}
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
-            console.log('Component did update');
+            if (prevState.options.length !== this.state.options.length) {
+                console.log('Component did update');
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+            }
         }
 
         //this component is barely used
@@ -116,10 +128,6 @@ var IndecisionApp = function (_React$Component) {
     return IndecisionApp;
 }(React.Component);
 
-IndecisionApp.defaultProps = {
-    options: []
-};
-
 var Header = function Header(props) {
     return React.createElement(
         'div',
@@ -175,6 +183,11 @@ var Options = function Options(props) {
             'button',
             { onClick: props.handleDeleteOption },
             'Remove All'
+        ),
+        props.options.length === 0 && React.createElement(
+            'p',
+            null,
+            'Please add an option to get started!'
         ),
         props.options.map(function (element) {
             return React.createElement(Option, { key: element,
