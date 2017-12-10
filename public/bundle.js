@@ -1568,7 +1568,7 @@ console.log(_validator2.default.isEmail('test@gmail.com'));
 var template = _react2.default.createElement(
   'p',
   null,
-  'testing'
+  'THIS IS JSX FROM WEBPACK!'
 );
 _reactDom2.default.render(template, document.getElementById('app'));
 
