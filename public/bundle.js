@@ -73,32 +73,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person_js__ = __webpack_require__(3);
 //import './utils.js';
 //Named exports, order does not matter
+//could import default as any name, just use the same default export name in the code.
  
 
 
 console.log('app.js is running');
 
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */])(4));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* square */])(4));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */])(2,3));
 
 console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */])(21));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */])(17));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["c" /* isAdult */])(17));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */])(5,3));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */])(65));
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 console.log('utils.js is running');
 
 const square = (x) => x*x;
 
 const add = (a, b) => a+b;
 
+const subtract = (a, b) => a-b;
 
+ //can only have one default export in this format
 
+//export default subtract; //inline ways of exporting default
+//or this way
+// export default (a, b) => a-b;
 //Or you can export like this...
 //export const square = (x) => x*x;
 
@@ -109,12 +118,16 @@ const add = (a, b) => a+b;
 
 "use strict";
 const isAdult = (age) => age > 18 ? 'You are an adult' : 'You are not an adult';
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isAdult;
 
 
 const canDrink = (age) => age >= 21 ? 'You can drink alcohol' : 'You cannot drink alcohol';
 /* harmony export (immutable) */ __webpack_exports__["a"] = canDrink;
 
+
+const isSenior = (age) => age >= 65 ? 'You are a senior' : 'You are still young';
+
+/* harmony default export */ __webpack_exports__["b"] = (isSenior);
 
 /***/ })
 /******/ ]);
