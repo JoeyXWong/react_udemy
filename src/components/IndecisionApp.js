@@ -6,15 +6,38 @@ import AddOptions from './AddOptions';
 
 export default class IndecisionApp extends React.Component {
     
-        constructor(props){
-            super(props);
-            this.handleDeleteOption = this.handleDeleteOption.bind(this);
-            this.handlePick = this.handlePick.bind(this);
-            this.handleAddOption = this.handleAddOption.bind(this);
-            this.handleDeleteOptionSingle = this.handleDeleteOptionSingle.bind(this);
-            this.state = {
-                options: [],
-            };
+        state = {
+            options: []
+        }
+
+        handlePick = () => {
+            const randomNumber = Math.floor(Math.random() * this.state.options.length);
+            alert(this.state.options[randomNumber]);
+        }
+    
+        handleAddOption = (option) =>{
+    
+            if(!option) {
+                return 'Enter valid value to add item';
+            } else if(this.state.options.indexOf(option) > -1){
+                return 'This option already exists';
+            }
+    
+            this.setState((prevState)=>({
+                options: prevState.options.concat(option)
+            }));
+        }
+    
+        handleDeleteOption = () => {
+            this.setState(()=>({
+                    options : [],
+            }));
+        }
+    
+        handleDeleteOptionSingle = (optionToRemove) => {
+            this.setState((prevState)=>({
+                options: prevState.options.filter((option)=>option !== optionToRemove)
+            }));
         }
     
         //only class-based components can call the mount methods, stateless functional components can't
@@ -45,35 +68,6 @@ export default class IndecisionApp extends React.Component {
             console.log('ComponentWillUnmount');
         }
     
-        handlePick(){
-            const randomNumber = Math.floor(Math.random() * this.state.options.length);
-            alert(this.state.options[randomNumber]);
-        }
-    
-        handleAddOption(option){
-    
-            if(!option) {
-                return 'Enter valid value to add item';
-            } else if(this.state.options.indexOf(option) > -1){
-                return 'This option already exists';
-            }
-    
-            this.setState((prevState)=>({
-                options: prevState.options.concat(option)
-            }));
-        }
-    
-        handleDeleteOption(){
-            this.setState(()=>({
-                    options : [],
-            }));
-        }
-    
-        handleDeleteOptionSingle(optionToRemove){
-            this.setState((prevState)=>({
-                options: prevState.options.filter((option)=>option !== optionToRemove)
-            }));
-        }
     
         render(){
     
