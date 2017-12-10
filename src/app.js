@@ -1,15 +1,8 @@
-//import './utils.js';
-//Named exports, order does not matter
-//could import default as any name, just use the same default export name in the code.
-import subtract, { square, add } from './utils.js'; 
-import isSenior, { canDrink, isAdult } from './person.js';
+import validator from 'validator';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('app.js is running');
+console.log(validator.isEmail('test@gmail.com'));
 
-console.log(square(4));
-console.log(add(2,3));
-
-console.log(canDrink(21));
-console.log(isAdult(17));
-console.log(subtract(5,3));
-console.log(isSenior(65));
+const template = <p>testing</p>;
+ReactDOM.render(template, document.getElementById('app'));
