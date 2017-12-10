@@ -14,7 +14,7 @@ export default class IndecisionApp extends React.Component {
             this.handleDeleteOptionSingle = this.handleDeleteOptionSingle.bind(this);
             this.state = {
                 options: [],
-            }
+            };
         }
     
         //only class-based components can call the mount methods, stateless functional components can't
@@ -77,7 +77,7 @@ export default class IndecisionApp extends React.Component {
     
         render(){
     
-            const title = 'Indecision';
+            const title = 'Indecision!';
             const subtitle = 'Put your life in the hands of a computer!';
     
             return (
